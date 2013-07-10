@@ -4,9 +4,20 @@
   )
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
-	    [taoensso.carmine :as car :refer (wcar)]
+	        [taoensso.carmine :as car :refer (wcar)]
             [hiccup.form :as form]
 ))
+
+
+; Approach:
+
+; 1.
+; Learn basic redis in the command line. There are tutorials for this. Pay special attention to building lists of things and using the "append" command
+; Activate redis with redis-cli in terminal
+
+; 2. Try saving blog posts to disk. Line 44
+
+; 3. Show the list of blog posts instead of using the for loop. Line 31
 
 
 (def redis-conn {:pool {} :spec {}})
@@ -17,7 +28,7 @@
   (GET "/blog" [] 
 	(html 
 	    [:ul
-	          ; TODO: Replace this for loop with REAL blog posts that have been retrieved from the database.
+	        ; TODO: Replace this for loop with REAL blog posts that have been retrieved from the database.
             (for [x (range 1 10)]
             [:li "Blah blah an old blog post"])]
         (form/form-to [:post "/blog"]
@@ -41,8 +52,8 @@
 	; show the current counter value to the user
 	(let [db-results	(wcar*  (car/incr "visitors"))]
 		(str "Visitors so far: " db-results)
-		;"Sweet world"
-))
+    )
+  )
 
   (route/resources "/media")
   (route/not-found "Not Found")
