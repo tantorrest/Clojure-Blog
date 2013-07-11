@@ -5,6 +5,7 @@
                  [compojure "1.1.5"]
 		 [com.taoensso/carmine "2.0.0-RC1"]
 		 [hiccup "1.0.3"]
+		 [ring/ring-jetty-adapter "1.1.0"]
 ]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler hello-world.handler/app}
